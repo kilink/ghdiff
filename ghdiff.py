@@ -90,22 +90,22 @@ def _line_diff(a, b):
         bline.append('<span class="highlight">%s</span>' % (escape(b[j1:j2]),))
     return "".join(aline), "".join(bline)
 
-    
+
 if __name__ == "__main__":
     import optparse
     import sys
-    
+
     parser = optparse.OptionParser()
     parser.set_usage("%prog [options] file1 file2")
     parser.add_option("--no-css", action="store_false", dest="css",
                       help="Don't include CSS in output", default=True)
-    
+
     options, args = parser.parse_args()
-    
+
     if (len(args) != 2):
         parser.print_help()
         sys.exit(-1)
-    
+
     a = open(sys.argv[1]).read().splitlines()
     b = open(sys.argv[2]).read().splitlines()
     print diff(a, b, css=options.css)
