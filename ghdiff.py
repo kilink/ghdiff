@@ -52,26 +52,22 @@ def diff(a, b, n=3, css=True):
             '<div class="control">@@ -%d,%d +%d,%d @@</div>' % (
                 i1+1, i2-i1, j1+1, j2-j1))
         for tag, i1, i2, j1, j2 in group:
+            alines = a[i1:i2]
+            blines = b[j1:j2]
             if tag == "equal":
-                for line in a[i1:i2]:
+                for line in alines:
                     output.append("<div>%s</div>" % escape(line or " ",))
                 continue
-            if tag == "replace":
-                alines = []
-                blines = []
-                for i, line in enumerate(a[i1:i2]):
-                    aline, bline = _line_diff(line, b[j1:j2][i])
-                    alines.append(aline)
-                    blines.append(bline)
-                for line in alines:
-                    output.append('<div class="delete">-%s</div>'% (line,))
-                for line in blines:
-                    output.append('<div class="insert">+%s</div>'% (line,))
-            if tag == "delete":
+            if tag == "replace" and len(alines) == 1 and len(blines) == 1:
+                    aline, bline = _line_diff(alines[0], blines[0])
+                    output.append('<div class="delete">-%s</div>'% (aline,))
+                    output.append('<div class="insert">+%s</div>'% (bline,))
+                    continue
+            if tag == "replace" or tag == "delete":
                 for line in a[i1:i2]:
                     output.append(
                         '<div class="delete">-%s</div>'% (escape(line),))
-            if tag == "insert":
+            if tag == "replace" or tag == "insert":
                 for line in b[j1:j2]:
                     output.append(
                         '<div class="insert">+%s</div>'% (escape(line),))
