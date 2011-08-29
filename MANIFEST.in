@@ -1,0 +1,1 @@
+include LICENSE.txt README.txt setup.py src/default.css src/ghdiff.py src/tests.py 
