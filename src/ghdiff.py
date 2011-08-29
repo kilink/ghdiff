@@ -3,14 +3,45 @@ import os.path
 import xml.sax.saxutils
 
 
-def escape(text):
-    return xml.sax.saxutils.escape(text, {" ": "&nbsp;"})
-
 default_css = """\
 <style type="text/css">
-%s
+    .diff {
+        border: 1px solid #cccccc;
+        background: none repeat scroll 0 0 #f8f8f8;
+        font-family: 'Bitstream Vera Sans Mono','Courier',monospace;
+        font-size: 12px;
+        line-height: 1.4;
+        white-space: normal;
+    }
+    .diff div:hover {
+        background-color:#ffc;
+    }
+    .diff .control {
+        background-color: #eaf2f5;
+        color: #999999;
+    }
+    .diff .insert {
+        background-color: #ddffdd;
+        color: #000000;
+    }
+    .diff .insert .highlight {
+        background-color: #aaffaa;
+        color: #000000;
+    }
+    .diff .delete {
+        background-color: #ffdddd;
+        color: #000000;
+    }
+    .diff .delete .highlight {
+        background-color: #ffaaaa;
+        color: #000000;
+    }
 </style>
-""" % (open(os.path.join(os.path.dirname(__file__), "default.css")).read(),)
+"""
+
+
+def escape(text):
+    return xml.sax.saxutils.escape(text, {" ": "&nbsp;"})
 
 
 def diff(a, b, n=3, css=True):
