@@ -1,8 +1,7 @@
-#!/usr/bin/python
-
 import difflib
 import os.path
 import xml.sax.saxutils
+
 
 def escape(text):
     return xml.sax.saxutils.escape(text, {" ": "&nbsp;"})
@@ -26,10 +25,8 @@ def colorize(diff, css=True):
     css = default_css if css else ""
     return css + "\n".join(_colorize(diff))
 
-bp = False
+
 def _colorize(diff):
-    if bp:
-        import pdb; pdb.set_trace()
     if isinstance(diff, basestring):
         lines = diff.splitlines()
     else:
