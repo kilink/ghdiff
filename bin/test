@@ -1,0 +1,25 @@
+#!/Users/patrick/opt/bin/python2.6 -S
+
+import sys
+sys.path[0:0] = [
+    '/Users/patrick/dev/ghdiff/parts/test/site-packages',
+    ]
+
+
+import os
+path = sys.path[0]
+if os.environ.get('PYTHONPATH'):
+    path = os.pathsep.join([path, os.environ['PYTHONPATH']])
+os.environ['BUILDOUT_ORIGINAL_PYTHONPATH'] = os.environ.get('PYTHONPATH', '')
+os.environ['PYTHONPATH'] = path
+import site # imports custom buildout-generated site.py
+import os
+sys.argv[0] = os.path.abspath(sys.argv[0])
+os.chdir('/Users/patrick/dev/ghdiff/parts/test/working-directory')
+
+import zope.testrunner
+
+if __name__ == '__main__':
+    zope.testrunner.run([
+        '--test-path', '/Users/patrick/dev/ghdiff/src',
+        ])

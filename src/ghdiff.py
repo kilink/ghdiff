@@ -10,20 +10,26 @@ def escape(text):
 default_css = """\
 <style type="text/css">
 %s
-</style>""" % (open(os.path.join(os.path.dirname(__file__), "default.css")).read(),)
+</style>
+""" % (open(os.path.join(os.path.dirname(__file__), "default.css")).read(),)
+
 
 def diff(a, b, n=3, css=True):
     if isinstance(a, basestring):
         a = a.splitlines()
     if isinstance(b, basestring):
         b = b.splitlines()
-    res = "\n".join(color(list(difflib.unified_diff(a, b, n=n))))
-    if css:
-        res = "\n".join([default_css, res])
-    return res
+    return colorize(list(difflib.unified_diff(a, b, n=n)), css=css)
 
 
-def color(diff):
+def colorize(diff, css=True):
+    css = default_css if css else ""
+    return css + "\n".join(_colorize(diff))
+
+bp = False
+def _colorize(diff):
+    if bp:
+        import pdb; pdb.set_trace()
     if isinstance(diff, basestring):
         lines = diff.splitlines()
     else:
@@ -51,7 +57,7 @@ def color(diff):
                     if _next:
                         lines.append(_next.pop())
                     continue
-                lines.extend(_next)
+                lines.extend(reversed(_next))
         elif line.startswith("+"):
             klass = "insert"
         yield '<div class="%s">%s</div>' % (klass, escape(line),)
