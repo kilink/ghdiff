@@ -1,0 +1,6 @@
+README.txt
+setup.py
+ghdiff.egg-info/PKG-INFO
+ghdiff.egg-info/SOURCES.txt
+ghdiff.egg-info/dependency_links.txt
+ghdiff.egg-info/top_level.txt
