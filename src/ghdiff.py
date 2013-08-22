@@ -1,5 +1,6 @@
 import difflib
 import os.path
+import six
 import xml.sax.saxutils
 
 
@@ -45,9 +46,9 @@ def escape(text):
 
 
 def diff(a, b, n=3, css=True):
-    if isinstance(a, basestring):
+    if isinstance(a, six.string_types):
         a = a.splitlines()
-    if isinstance(b, basestring):
+    if isinstance(b, six.string_types):
         b = b.splitlines()
     return colorize(list(difflib.unified_diff(a, b, n=n)), css=css)
 
@@ -58,7 +59,7 @@ def colorize(diff, css=True):
 
 
 def _colorize(diff):
-    if isinstance(diff, basestring):
+    if isinstance(diff, six.string_types):
         lines = diff.splitlines()
     else:
         lines = diff
@@ -123,4 +124,4 @@ if __name__ == "__main__":
 
     a = open(sys.argv[1]).read().splitlines()
     b = open(sys.argv[2]).read().splitlines()
-    print diff(a, b, css=options.css)
+    six.print_(diff(a, b, css=options.css))

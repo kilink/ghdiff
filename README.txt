@@ -10,8 +10,8 @@ diff
 Generate a diff and output Github-style HTML for it.
 
     >>> import ghdiff
-    >>> from pprint import pprint
-    >>> print ghdiff.diff("a", "b")
+    >>> from six import print_
+    >>> print_(ghdiff.diff("a", "b"))
     <style type="text/css">
     ...
     </style>
@@ -24,7 +24,7 @@ Generate a diff and output Github-style HTML for it.
 
 The css option controls whether or not the output includes CSS.
 
-    >>> print ghdiff.diff("blah blah blah\nb", "blah zxqq blah\nb", css=False)
+    >>> print_(ghdiff.diff("blah blah blah\nb", "blah zxqq blah\nb", css=False))
     <div class="diff">
         <div class="control">@@&nbsp;-1,2&nbsp;+1,2&nbsp;@@
         </div>
@@ -35,7 +35,7 @@ The css option controls whether or not the output includes CSS.
 
 diff accepts lists of strings representing lines as well.
 
-    >>> print ghdiff.diff(["blah blah blah", "b"], ["blah zxqq blah", "b"])
+    >>> print_(ghdiff.diff(["blah blah blah", "b"], ["blah zxqq blah", "b"]))
     <style type="text/css">
     ...
     </style>
@@ -52,7 +52,7 @@ colorize
 
 colorize takes an existing unified diff and outputs Github-style markup.
 
-    >>> print ghdiff.colorize("""\
+    >>> print_(ghdiff.colorize("""\
     ... index 921100e..8b177e1 100755
     ... --- a/src/ghdiff.py
     ... +++ b/src/ghdiff.py
@@ -63,7 +63,7 @@ colorize takes an existing unified diff and outputs Github-style markup.
     ... -</style>\"\"\" % (open(os.path.join(os.path.dirname(__file__), "default.css")).read(),)
     ... +</style>
     ... +\"\"\" % (open(os.path.join(os.path.dirname(__file__), "default.css")).read(),)
-    ... +""")
+    ... +"""))
     <style type="text/css">
     ...
     </style>
