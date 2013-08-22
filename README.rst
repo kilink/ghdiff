@@ -11,6 +11,8 @@ diff
 
 Generate a diff and output Github-style HTML for it.
 
+.. code-block:: pycon
+
     >>> import ghdiff
     >>> from six import print_
     >>> print_(ghdiff.diff("a", "b"))
@@ -26,6 +28,8 @@ Generate a diff and output Github-style HTML for it.
 
 The css option controls whether or not the output includes CSS.
 
+.. code-block:: pycon
+
     >>> print_(ghdiff.diff("blah blah blah\nb", "blah zxqq blah\nb", css=False))
     <div class="diff">
         <div class="control">@@&nbsp;-1,2&nbsp;+1,2&nbsp;@@
@@ -36,6 +40,8 @@ The css option controls whether or not the output includes CSS.
     </div>
 
 diff accepts lists of strings representing lines as well.
+
+.. code-block:: pycon
 
     >>> print_(ghdiff.diff(["blah blah blah", "b"], ["blah zxqq blah", "b"]))
     <style type="text/css">
@@ -53,6 +59,8 @@ colorize
 ========
 
 colorize takes an existing unified diff and outputs Github-style markup.
+
+.. code-block:: pycon
 
     >>> print_(ghdiff.colorize("""\
     ... index 921100e..8b177e1 100755
