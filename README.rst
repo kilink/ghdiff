@@ -1,8 +1,10 @@
-======
+.. image:: https://secure.travis-ci.org/kilink/ghdiff.png?branch=master
+   :target: http://travis-ci.org/kilink/ghdiff
+
 ghdiff
 ======
 
-ghdiff generates Github-style HTML for unified diffs.
+Generate Github-style HTML for unified diffs.
 
 diff
 ====
