@@ -11,4 +11,6 @@ setup(
     include_package_data=True,
     package_dir={"": "src"},
     py_modules=["ghdiff"],
+    tests_require=["zope.testrunner"],
+    test_suite="tests.test_suite"
     )
