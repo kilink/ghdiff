@@ -1,6 +1,9 @@
 .. image:: https://secure.travis-ci.org/kilink/ghdiff.png?branch=master
    :target: http://travis-ci.org/kilink/ghdiff
 
+.. image:: https://coveralls.io/repos/kilink/ghdiff/badge.png
+   :target: https://coveralls.io/r/kilink/ghdiff
+
 ghdiff
 ======
 
