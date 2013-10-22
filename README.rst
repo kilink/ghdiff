@@ -15,15 +15,16 @@ Generate a diff and output Github-style HTML for it.
 
     >>> import ghdiff
     >>> from six import print_
-    >>> print_(ghdiff.diff("a", "b"))
+    >>> print_(ghdiff.diff("a\nb", "b\nb"))
     <style type="text/css">
     ...
     </style>
     <div class="diff">
-        <div class="control">@@&nbsp;-1,1&nbsp;+1,1&nbsp;@@
+        <div class="control">@@&nbsp;-1,2&nbsp;+1,2&nbsp;@@
         </div>
-        <div class="delete">-<span class="highlight">a</span></div>
-        <div class="insert">+<span class="highlight">b</span></div>
+        <div class="delete">-a</div>
+        <div class="">&nbsp;b</div>
+        <div class="insert">+b</div>
     </div>
 
 The css option controls whether or not the output includes CSS.
