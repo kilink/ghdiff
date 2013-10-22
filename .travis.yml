@@ -4,6 +4,11 @@ python:
     - 2.7
     - 3.3
 install:
-    - pip install . --use-mirrors
+    - pip install coverage coveralls --use-mirrors
+    - pip install -e .
 script:
-    - python setup.py test -q
+    - coverage run --source=ghdiff -m zope.testrunner.__init__ --test-path=src
+after_success:
+    - coveralls
+notifications:
+    email: false
