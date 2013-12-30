@@ -1,5 +1,4 @@
 import difflib
-import os.path
 import six
 import xml.sax.saxutils
 
@@ -91,7 +90,6 @@ def _colorize(diff):
             klass = "insert"
         yield '<div class="%s">%s</div>' % (klass, escape(line),)
     yield "</div>"
-
 
 
 def _line_diff(a, b):
