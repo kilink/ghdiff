@@ -12,6 +12,7 @@ default_css = """\
         font-size: 12px;
         line-height: 1.4;
         white-space: normal;
+        word-wrap: break-word;
     }
     .diff div:hover {
         background-color:#ffc;
