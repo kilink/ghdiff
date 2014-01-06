@@ -1,5 +1,4 @@
 import difflib
-import os.path
 import six
 import xml.sax.saxutils
 
@@ -13,6 +12,7 @@ default_css = """\
         font-size: 12px;
         line-height: 1.4;
         white-space: normal;
+        word-wrap: break-word;
     }
     .diff div:hover {
         background-color:#ffc;
@@ -91,7 +91,6 @@ def _colorize(diff):
             klass = "insert"
         yield '<div class="%s">%s</div>' % (klass, escape(line),)
     yield "</div>"
-
 
 
 def _line_diff(a, b):
