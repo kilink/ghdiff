@@ -9,6 +9,21 @@ ghdiff
 
 Generate Github-style HTML for unified diffs.
 
+Changes
+-------
+
+0.2
+~~~
+
+* Detect character encoding when reading files (Nyoroon)
+* PEP-8 clean up (laulaz)
+* Fix display problem when text line is too long (laulaz)
+
+0.1
+~~~
+
+* initial release.
+
 diff
 ====
 
