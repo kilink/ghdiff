@@ -1,7 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import difflib
 import six
 import xml.sax.saxutils
-
+import chardet
 
 default_css = """\
 <style type="text/css">
@@ -121,6 +124,12 @@ if __name__ == "__main__":
         parser.print_help()
         sys.exit(-1)
 
-    a = open(sys.argv[1]).read().splitlines()
-    b = open(sys.argv[2]).read().splitlines()
-    six.print_(diff(a, b, css=options.css))
+    def read_file(filename):
+        with open(filename) as f:
+            text = f.read()
+        codepage = chardet.detect(text)['encoding']
+        return text.decode(codepage).splitlines()
+
+    a = read_file(sys.argv[1])
+    b = read_file(sys.argv[2])
+    print(diff(a, b, css=options.css).encode('utf-8'))
