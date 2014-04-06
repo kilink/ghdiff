@@ -113,7 +113,9 @@ def _line_diff(a, b):
     return "".join(aline), "".join(bline)
 
 
-def main(args, stdout=sys.stdout):
+def main(args=None, stdout=sys.stdout):
+    if args is None:
+        args = sys.argv[1:]
     parser = optparse.OptionParser(usage="%prog [options] file1 file2",
                                    version="%prog " + __version__)
     parser.add_option("--no-css", action="store_false", dest="css",

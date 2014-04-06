@@ -13,5 +13,10 @@ setup(
     py_modules=["ghdiff"],
     tests_require=["zope.testrunner"],
     install_requires=["six", "chardet"],
-    test_suite="tests.test_suite"
+    test_suite="tests.test_suite",
+    entry_points={
+        'console_scripts': [
+            "ghdiff = ghdiff:main"
+            ]
+        },
     )
