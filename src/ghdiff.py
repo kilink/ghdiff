@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import difflib
-import six
-import xml.sax.saxutils
 import chardet
+import difflib
+import optparse
+import six
+import sys
+import xml.sax.saxutils
+
+__version__ = "0.2"
 
 default_css = """\
 <style type="text/css">
@@ -109,19 +113,16 @@ def _line_diff(a, b):
     return "".join(aline), "".join(bline)
 
 
-if __name__ == "__main__":
-    import optparse
-    import sys
-
-    parser = optparse.OptionParser()
-    parser.set_usage("%prog [options] file1 file2")
+def main(args, stdout=sys.stdout):
+    parser = optparse.OptionParser(usage="%prog [options] file1 file2",
+                                   version="%prog " + __version__)
     parser.add_option("--no-css", action="store_false", dest="css",
                       help="Don't include CSS in output", default=True)
 
-    options, args = parser.parse_args()
+    options, args = parser.parse_args(args)
 
     if (len(args) != 2):
-        parser.print_help()
+        parser.print_help(stdout)
         sys.exit(-1)
 
     def read_file(filename):
@@ -130,6 +131,9 @@ if __name__ == "__main__":
         codepage = chardet.detect(text)['encoding']
         return text.decode(codepage).splitlines()
 
-    a = read_file(sys.argv[1])
-    b = read_file(sys.argv[2])
-    print(diff(a, b, css=options.css).encode('utf-8'))
+    a = read_file(args[0])
+    b = read_file(args[1])
+    six.print_(diff(a, b, css=options.css).encode('utf-8'), file=stdout)
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

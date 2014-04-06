@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="ghdiff",
-    version="0.1",
+    version="0.2",
     author="Patrick Strawderman",
     author_email="patrick@kilink.net",
     url="http://github/kilink/ghdiff",
