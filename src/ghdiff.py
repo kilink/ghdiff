@@ -8,7 +8,7 @@ import six
 import sys
 import xml.sax.saxutils
 
-__version__ = "0.2"
+__version__ = "0.3"
 
 default_css = """\
 <style type="text/css">

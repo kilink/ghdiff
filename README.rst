@@ -12,6 +12,11 @@ Generate Github-style HTML for unified diffs.
 Changes
 -------
 
+0.3 (2014-04-06)
+~~~~~~~~~~~~~~~~
+
+* Fix Python 3 issue when running as a command-line script.
+
 0.2
 ~~~
 

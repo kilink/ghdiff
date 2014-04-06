@@ -2,10 +2,12 @@ from setuptools import setup
 
 setup(
     name="ghdiff",
-    version="0.2",
+    version="0.3",
+    description="Generate Github-style HTML for unified diffs.",
+    long_description=open("README.rst").read(),
     author="Patrick Strawderman",
     author_email="patrick@kilink.net",
-    url="http://github/kilink/ghdiff",
+    url="https://github.com/kilink/ghdiff",
     license="MIT",
     package_data={"": ["*.py", "*.txt", "*.css"]},
     include_package_data=True,
@@ -19,4 +21,19 @@ setup(
             "ghdiff = ghdiff:main"
         ]
     },
+    classifiers=['Development Status :: 5 - Production/Stable',
+                   'Environment :: Console',
+                   'Intended Audience :: Developers',
+                   'Natural Language :: English',
+                   'License :: OSI Approved :: MIT License',
+                   'Programming Language :: Python',
+                   'Programming Language :: Python :: 2',
+                   'Programming Language :: Python :: 2.6',
+                   'Programming Language :: Python :: 2.7',
+                   'Programming Language :: Python :: 3',
+                   'Programming Language :: Python :: 3.3',
+                   'Programming Language :: Python :: 3.4',
+                   'Topic :: Software Development',
+                   'Topic :: Utilities',
+                   ],
 )
