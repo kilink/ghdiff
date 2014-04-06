@@ -128,14 +128,14 @@ def main(args=None, stdout=sys.stdout):
         sys.exit(-1)
 
     def read_file(filename):
-        with open(filename) as f:
+        with open(filename, "rb") as f:
             text = f.read()
         codepage = chardet.detect(text)['encoding']
         return text.decode(codepage).splitlines()
 
     a = read_file(args[0])
     b = read_file(args[1])
-    six.print_(diff(a, b, css=options.css).encode('utf-8'), file=stdout)
+    stdout.write(diff(a, b, css=options.css).encode("utf-8"))
 
 if __name__ == "__main__":
     main(sys.argv[1:])

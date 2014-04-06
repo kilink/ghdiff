@@ -33,8 +33,8 @@ class GhDiffTest(unittest.TestCase):
         out = io.BytesIO()
         ghdiff.main([f1, f2], stdout=out)
         output = out.getvalue()
-        self.assertTrue("-foobar" in output)
-        self.assertTrue('+foobar<span class="highlight">baz</span>' in output)
+        self.assertTrue(b"-foobar" in output)
+        self.assertTrue(b'+foobar<span class="highlight">baz</span>' in output)
 
     def test_no_css_option(self):
         """Simple test for --no-css option"""
@@ -43,7 +43,7 @@ class GhDiffTest(unittest.TestCase):
         out = io.BytesIO()
         ghdiff.main([f1, f2, "--no-css"], stdout=out)
         output = out.getvalue()
-        self.assertFalse("<style" in output)
+        self.assertFalse(b"<style" in output)
 
 
 def test_suite():
