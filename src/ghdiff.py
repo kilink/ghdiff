@@ -85,8 +85,8 @@ def _colorize(diff):
                 _next = []
                 while lines and len(_next) < 2:
                     _next.append(lines.pop())
-                if _next[0].startswith("+") and (len(_next) == 1
-                    or _next[1][0] not in ("+", "-")):
+                if _next[0].startswith("+") and (
+                        len(_next) == 1 or _next[1][0] not in ("+", "-")):
                     aline, bline = _line_diff(line[1:], _next.pop(0)[1:])
                     yield '<div class="delete">-%s</div>' % (aline,)
                     yield '<div class="insert">+%s</div>' % (bline,)

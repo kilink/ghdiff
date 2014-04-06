@@ -7,6 +7,7 @@ import sys
 import tempfile
 import unittest
 
+
 class GhDiffTest(unittest.TestCase):
 
     def write_file(self, text):
