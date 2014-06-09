@@ -12,7 +12,7 @@ setup(
     package_data={"": ["*.py", "*.txt", "*.css"]},
     include_package_data=True,
     package_dir={"": "src"},
-    py_modules=["ghdiff"],
+    py_modules=["ghdiff", "ipython_magic"],
     tests_require=["zope.testrunner"],
     install_requires=["six", "chardet"],
     test_suite="tests.test_suite",
