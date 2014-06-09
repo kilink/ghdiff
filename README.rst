@@ -12,6 +12,7 @@ Generate Github-style HTML for unified diffs.
 Changes
 -------
 
+
 0.3 (2014-04-06)
 ~~~~~~~~~~~~~~~~
 
@@ -79,12 +80,26 @@ diff accepts lists of strings representing lines as well.
         <div class="">&nbsp;b</div>
     </div>
 
+IPython magic
+=============
+
+ghdiff also works as an IPython magic:
+
+.. code-block:: python
+
+    In[1]: %load_ext ghdiff
+
+    In[2]: %ghdiff var1 var2
+
+See a `notebook example <http://nbviewer.ipython.org/github/kilink/ghdiff/blob/master/demo.ipynb>`_
+
+
 colorize
 ========
 
 colorize takes an existing unified diff and outputs Github-style markup.
 
-.. code-block:: pycon
+.. code-block:: python
 
     >>> print_(ghdiff.colorize("""\
     ... index 921100e..8b177e1 100755
