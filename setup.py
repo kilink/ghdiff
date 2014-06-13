@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="ghdiff",
-    version="0.3",
+    version="0.4",
     description="Generate Github-style HTML for unified diffs.",
     long_description=open("README.rst").read(),
     author="Patrick Strawderman",
