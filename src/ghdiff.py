@@ -124,7 +124,7 @@ def main(args=None, stdout=sys.stdout):
 
     options, args = parser.parse_args(args)
 
-    if (len(args) != 2):
+    if len(args) != 2:
         parser.print_help(stdout)
         sys.exit(-1)
 
