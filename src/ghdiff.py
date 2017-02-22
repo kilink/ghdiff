@@ -121,6 +121,8 @@ def main(args=None, stdout=sys.stdout):
                                    version="%prog " + __version__)
     parser.add_option("--no-css", action="store_false", dest="css",
                       help="Don't include CSS in output", default=True)
+    parser.add_option("-n", "--num_context", dest="num_context", type="int",
+                      help="Number of context lines to include", default=3)
 
     options, args = parser.parse_args(args)
 
@@ -136,7 +138,7 @@ def main(args=None, stdout=sys.stdout):
 
     a = read_file(args[0])
     b = read_file(args[1])
-    stdout.write(diff(a, b, css=options.css).encode("utf-8"))
+    stdout.write(diff(a, b, n=options.num_context, css=options.css).encode("utf-8"))
 
 
 def load_ipython_extension(ip):
